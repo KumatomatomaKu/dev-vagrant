@@ -8,8 +8,17 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 sudo aptitude install -y language-pack-ja
 sudo dpkg-reconfigure locales
 
-sudo apt-get install --yes git
-sudo apt-get install --yes make
+sudo apt-get install --yes git make build-essential g++
+
+cat <<__EOF__ | sudo tee ~/.gitconfig
+[push]
+    default = tracking
+[color]
+    ui = auto
+[core]
+    precomposeunicode = true
+    editor = vim
+__EOF__
 
 sudo apt-get install --yes redis-server
 sed -e 's/^port 6379$/port 11222/' /etc/redis/redis.conf > /tmp/redis.conf
@@ -18,7 +27,6 @@ sudo chmod 644 /etc/redis/redis.conf
 sudo service redis-server force-reload
 
 sudo apt-get install --yes memcached
-
 
 sudo mkdir -p /etc/mysql/conf.d
 cat <<__EOF__ | sudo tee /etc/mysql/conf.d/character_set.cnf
@@ -36,17 +44,15 @@ default-character-set=utf8
 default-character-set=utf8
 __EOF__
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get install --yes mysql-server
+sudo DEBIAN_FRONTEND=noninteractive apt-get install --yes mysql-server-5.5
 sudo apt-get install --yes libmysqlclient-dev
 
-
-##
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 echo 'export LC_CTYPE=en_US.UTF-8' >> ~/.bash_profile
-echo 'export LC_ALL=en_US.UTF-8"' >> ~/.bash_profile
+echo 'export LC_ALL=en_US.UTF-8' >> ~/.bash_profile
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+eval "$(rbenv init -)
