@@ -47,12 +47,12 @@ __EOF__
 sudo DEBIAN_FRONTEND=noninteractive apt-get install --yes mysql-server-5.5
 sudo apt-get install --yes libmysqlclient-dev
 
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 echo 'export LC_CTYPE=en_US.UTF-8' >> ~/.bash_profile
 echo 'export LC_ALL=en_US.UTF-8' >> ~/.bash_profile
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-eval "$(rbenv init -)
