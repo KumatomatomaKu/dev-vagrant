@@ -2,9 +2,9 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant::DEFAULT_SERVER_URL.replace('https://vagrantcloud.com')
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/bionic64"
 
-  config.vm.provision :shell, :privileged => false, :path => ".bootstrap.sh"
+  config.vm.provision :shell, :privileged => false, :path => "bootstrap.sh"
 
   config.ssh.forward_agent = true
   config.vm.network :forwarded_port, host: 3000, guest: 3000

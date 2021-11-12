@@ -1,9 +1,9 @@
 HISTSIZE=1000000
 
-export LANG="es_US.UTF-8"
-export LC_COLLATE="es_US.UTF-8"
-export LC_CTYPE="es_US.UTF-8"
-export LC_MESSAGES="es_US.UTF-8"
-export LC_MONETARY="es_US.UTF-8"
-export LC_NUMERIC="es_US.UTF-8"
-export LC_TIME="es_US.UTF-8"
+export LANG="en_US.utf8"
+export LC_COLLATE="en_US.utf8"
+export LC_CTYPE="en_US.utf8"
+export LC_MESSAGES="en_US.utf8"
+export LC_MONETARY="en_US.utf8"
+export LC_NUMERIC="en_US.utf8"
+export LC_TIME="en_US.utf8"
