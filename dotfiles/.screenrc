@@ -1,0 +1,25 @@
+defscrollback 100000
+
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+
+termcap kterm hs@
+terminfo kterm hs@
+vbell off
+bell_msg "Bell in window %^G"
+bind w windowlist -b
+hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+shell -$SHELL
+startup_message off
+autodetach on
+
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
+
+screen -t tab1
+screen -t tab2
+screen -t tab3
+screen -t tab4
+screen -t tab5
