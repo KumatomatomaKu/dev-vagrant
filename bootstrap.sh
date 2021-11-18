@@ -16,6 +16,7 @@ read -p "git email:" git_email
 git config --global user.name "$git_username"
 git config --global user.email $git_email
 git config --global push.default tracking
+git config --global pull.rebase false
 git config --global color.ui auto
 git config --global core.precomposeunicode true
 git config --global core.editor vim
