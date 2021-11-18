@@ -9,7 +9,7 @@ sudo timedatectl set-timezone Asia/Tokyo
 # Setup git enviroment
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install git-man git
 
 read -p "git username:" git_username
 read -p "git email:" git_email
@@ -68,3 +68,15 @@ sudo service redis-server force-reload
 
 # Install memcached
 sudo apt-get install -y memcached
+
+# Install gcloud and kubectl
+echo "deb http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install google-cloud-sdk
+gcloud auth login --no-launch-browser
+sudo apt-get install kubectl
+
+# Install bazelisk
+sudo curl -Lo /usr/local/bin/bazelisk https://github.com/bazelbuild/bazelisk/releases/download/v1.10.1/bazelisk-linux-arm64
+sudo chmod +x /usr/local/bin/bazelisk
